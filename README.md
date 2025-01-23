@@ -1,75 +1,43 @@
-# Nuxt Minimal Starter
+# FileFerry
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+FileFerry is a tool designed to streamline data integration with SAP B1 HANA using the Service Layer API. With FileFerry, users can easily upload Excel files, and the data gets processed and sent directly to SAP B1 HANA.
 
-## Setup
+## Features (Planned/Under Development)
+- **Excel File Upload**: Upload your Excel files for data processing.
+- **Integration with SAP B1 HANA**: Leverages the Service Layer API for seamless data synchronization.
+- **User-Friendly Interface**: Built with modern tools to deliver a sleek and responsive user experience.
 
-Make sure to install dependencies:
+## Tech Stack
+FileFerry is powered by:
+- **Nuxt 3**: For building a fast and modern front-end.
+- **@nuxt/icon**: Provides icons for enhanced UI elements.
+- **@nuxt/ui**: A design-first module for creating elegant user interfaces.
 
+## How It Works
+1. Upload an Excel file through the FileFerry interface.
+2. The software processes the data and prepares it for upload.
+3. FileFerry communicates with the SAP B1 HANA Service Layer API to upload the data.
+
+## Status
+FileFerry is currently in the early stages of development. More features and improvements are on the way!
+
+## Getting Started
+> **Note**: This section will be updated with detailed setup instructions as the project evolves.
+
+### Prerequisites
+- Node.js
+- Nuxt 3
+
+### Installation
 ```bash
-# npm
+# Clone the repository
+git clone https://github.com/your-username/FileFerry.git
+
+# Navigate to the project directory
+cd FileFerry
+
+# Install dependencies
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+# Start the development server
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
