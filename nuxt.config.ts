@@ -6,6 +6,11 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/eslint'
   ],
+  colorMode: {
+    preference: 'system', // Default to system preference
+    fallback: 'light', // Fallback mode if system preference is not detectable
+    storageKey: 'nuxt-color-mode' // Optional: Customize storage key
+  },
 
   css: ['~/assets/css/main.css'],
 
