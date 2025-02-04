@@ -1,6 +1,6 @@
 <template>
   <div :class="'min-h-screen flex flex-col'">
-    <header class="p-3 flex items-center justify-between border-b border-gray-300 dark:border-gray-700">
+    <header class="py-3 px-6 flex items-center justify-between border-b border-gray-300 dark:border-gray-700">
       <!-- Logo and App Name -->
       <div class="flex items-center space-x-2">
         <UIcon name="hugeicons:ferry-boat" size="25" />
