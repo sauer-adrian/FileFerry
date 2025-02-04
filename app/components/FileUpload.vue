@@ -8,6 +8,7 @@
       @drop.prevent="handleDrop"
       :class="{'border-[var(--ui-primary)': isDragging }">
       <p v-if="files.length === 0">Dateien hierher ziehen oder klicken zum Hochladen</p>
+      <p v-else-if="files.length === 1" class="text-[var(--ui-primary)]">{{ files.length }} Datei ausgewählt</p>
       <p v-else class="text-[var(--ui-primary)]">{{ files.length }} Dateien ausgewählt</p>
 
       <!-- Hidden File Input -->
@@ -20,7 +21,7 @@
       <li v-for="(file, index) in files" :key="file.name"
         class="flex items-center justify-between border dark:boder-red-100 boder-red-100 p-2 rounded-lg">
         <span class="truncate">{{ file.name }}</span>
-        <UButton icon="i-heroicons-x-mark" color="error" variant="ghost" @click="removeFile(index)" />
+        <UButton icon="i-heroicons-x-mark" color="error" variant="ghost" class="cursor-pointer" @click="removeFile(index)" />
       </li>
     </ul>
 
