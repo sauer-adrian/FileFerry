@@ -5,3 +5,10 @@
     </NuxtLayout>
   </UApp>
 </template>
+
+<script setup lang="ts">
+useHead({
+  title: 'FileFerry'
+})
+
+</script>

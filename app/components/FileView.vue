@@ -4,6 +4,28 @@ import type { TableColumn } from '@nuxt/ui'
 
 const UBadge = resolveComponent('UBadge')
 
+const items = ref([
+  {
+    label: 'Backlog',
+    icon: 'i-lucide-circle-help'
+  },
+  {
+    label: 'Todo',
+    icon: 'i-lucide-circle-plus'
+  },
+  {
+    label: 'In Progress',
+    icon: 'i-lucide-circle-arrow-up'
+  },
+  {
+    label: 'Done',
+    icon: 'i-lucide-circle-check'
+  }
+])
+const value = ref({
+  label: 'Return Address'
+})
+
 type Payment = {
   serialnumber: string
   date: string
@@ -106,6 +128,26 @@ const columns: TableColumn<Payment>[] = [
 </script>
 
 <template>
-  
+  <h1>Daten aus der Datei: Amazon_Sammeltabelle - Kopie.xlsx</h1>
+  <p>
+    <bold>Kunde: </bold>
+  </p>
+  <p>
+    <bold>Return Address: </bold>
+  </p>
+  <USelectMenu v-model="value" :search-input="{
+    placeholder: 'Filter...',
+    icon: 'i-lucide-search'
+  }" :items="items" class="w-48" />
+  <p>
+    <bold>Ticketnummer: </bold>
+  </p>
+  <p>
+    <bold>Kontakt: </bold>
+  </p>
+  <p>
+    <bold>Kontakt E-Mail: </bold>
+  </p>
+  <h2>Geräte</h2>
   <UTable :data="data" :columns="columns" class="flex-1" />
 </template>

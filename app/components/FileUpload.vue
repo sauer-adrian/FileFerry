@@ -89,23 +89,47 @@ const readExcelFile = async (file: File) => {
   reader.onload = async (event) => {
     const arrayBuffer = event.target?.result as ArrayBuffer;
     const workbook = new ExcelJS.Workbook();
-
     await workbook.xlsx.load(arrayBuffer);
-
-    // Read first worksheet
     const worksheet = workbook.worksheets[0];
 
-    // Extract data
-    const data: any[][] = [];
-    worksheet.eachRow((row) => {
-      data.push(row.values);
-    });
+    // Extract meaningful data
+    const jsonData: any = {
+      customer: worksheet.getRow(2).getCell(4).value,
+      returnAddress: worksheet.getRow(3).getCell(4).value,
+      contactPerson: worksheet.getRow(4).getCell(4).value,
+      email: worksheet.getRow(5).getCell(4).result || worksheet.getRow(5).getCell(4).value,
+      phone: worksheet.getRow(6).getCell(4).value,
+      nsr: worksheet.getRow(7).getCell(4).result || worksheet.getRow(7).getCell(4).value,
+      date: worksheet.getRow(8).getCell(4).result || worksheet.getRow(8).getCell(4).value,
+      lines: []
+    };
 
-    console.log("Extracted Data:", data);
+    // Extract table data (starting from row 10)
+    for (let i = 10; i <= worksheet.rowCount; i++) {
+      const row = worksheet.getRow(i);
+      if (row.getCell(2).value) {
+        jsonData.lines.push({
+          no: row.getCell(2).value,
+          serialNumber: row.getCell(3).value || "",
+          deviceType: row.getCell(4).value || "",
+          failureDescription: row.getCell(5).value || "",
+          kundennr: row.getCell(10).value || "",
+          email: row.getCell(11).value?.text || row.getCell(11).value || "",
+          ihrZeichen: row.getCell(12).value || ""
+        });
+      }
+    }
+
+    // Save to localStorage
+    localStorage.setItem("excelData", JSON.stringify(jsonData));
+
+    console.log("Data saved to localStorage:", jsonData);
   };
 
   reader.readAsArrayBuffer(file);
 };
+
+
 
 // Remove file from list
 const removeFile = (index: number) => files.value.splice(index, 1);
