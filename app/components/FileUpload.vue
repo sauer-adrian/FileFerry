@@ -94,28 +94,26 @@ const readExcelFile = async (file: File) => {
 
     // Extract meaningful data
     const jsonData: any = {
-      customer: worksheet.getRow(2).getCell(4).value,
-      returnAddress: worksheet.getRow(3).getCell(4).value,
-      contactPerson: worksheet.getRow(4).getCell(4).value,
-      email: worksheet.getRow(5).getCell(4).result || worksheet.getRow(5).getCell(4).value,
-      phone: worksheet.getRow(6).getCell(4).value,
-      nsr: worksheet.getRow(7).getCell(4).result || worksheet.getRow(7).getCell(4).value,
-      date: worksheet.getRow(8).getCell(4).result || worksheet.getRow(8).getCell(4).value,
+      customer: worksheet.getRow(3).getCell(3).value,
+      returnAddress: worksheet.getRow(4).getCell(4).value,
+      contactPerson: worksheet.getRow(5).getCell(3).value,
+      email: worksheet.getRow(6).getCell(3).result,
+      phone: worksheet.getRow(7).getCell(3).value,
+      nsr: worksheet.getRow(7).getCell(3).result,
+      ticketNumber: worksheet.getRow(8).getCell(3).result,
       lines: []
     };
 
     // Extract table data (starting from row 10)
-    for (let i = 10; i <= worksheet.rowCount; i++) {
+    for (let i = 12; i <= worksheet.rowCount; i++) {
       const row = worksheet.getRow(i);
       if (row.getCell(2).value) {
         jsonData.lines.push({
-          no: row.getCell(2).value,
-          serialNumber: row.getCell(3).value || "",
-          deviceType: row.getCell(4).value || "",
-          failureDescription: row.getCell(5).value || "",
-          kundennr: row.getCell(10).value || "",
-          email: row.getCell(11).value?.text || row.getCell(11).value || "",
-          ihrZeichen: row.getCell(12).value || ""
+          no: row.getCell(1).value,
+          serialNumber: row.getCell(2).value || "",
+          deviceType: row.getCell(3).value || "",
+          failureDescription: row.getCell(4).value || "",
+          rmaNumber: row.getCell(5).value || ""
         });
       }
     }
