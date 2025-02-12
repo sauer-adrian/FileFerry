@@ -130,23 +130,23 @@ const columns: TableColumn<Payment>[] = [
 <template>
   <h1>Daten aus der Datei: Amazon_Sammeltabelle - Kopie.xlsx</h1>
   <p>
-    <bold>Kunde: </bold>
+    Kunde:
   </p>
   <p>
-    <bold>Return Address: </bold>
+    Return Address:
   </p>
   <USelectMenu v-model="value" :search-input="{
     placeholder: 'Filter...',
     icon: 'i-lucide-search'
   }" :items="items" class="w-48" />
   <p>
-    <bold>Ticketnummer: </bold>
+    Ticketnummer:
   </p>
   <p>
-    <bold>Kontakt: </bold>
+    Kontakt:
   </p>
   <p>
-    <bold>Kontakt E-Mail: </bold>
+    Kontakt E-Mail:
   </p>
   <h2>Geräte</h2>
   <UTable :data="data" :columns="columns" class="flex-1" />
