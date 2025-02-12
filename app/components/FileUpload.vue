@@ -35,11 +35,14 @@ const isDragging = ref(false);
 const files = ref<File[]>([]);
 
 const triggerFileInput = () => {
-  const inputEl = fileInput.value?.$el.querySelector("input");
+  const inputEl = (fileInput.value as any)?.$el?.querySelector("input");
   if (inputEl) {
     inputEl.click();
+  } else {
+    console.error("File input element not found.");
   }
 };
+
 
 // Drag & Drop Handlers
 const dragOver = () => (isDragging.value = true);
@@ -100,7 +103,7 @@ const readExcelFile = async (file: File) => {
         showToast("Die Excel-Datei enthält kein Arbeitsblatt.", "error");
         return;
       }
-      
+
       // Extract meaningful data
       const jsonData: { [key: string]: any } = {
         customer: worksheet.getRow(3).getCell(3).value,
@@ -113,7 +116,7 @@ const readExcelFile = async (file: File) => {
       };
 
       // Validate main fields
-      const requiredFields = ["customer", "returnAddress", "contactPerson", "email", "phone", "nsr", "ticketNumber"];
+      const requiredFields = ["customer", "returnAddress", "contactPerson", "email", "phone", "ticketNumber"];
       const missingFields = requiredFields.filter(field => !jsonData[field]);
 
       if (missingFields.length) {
